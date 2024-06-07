@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     while (1) {
         erase();
         display_list(notes, qnotes, selected);
-        mvprintw(LINES - 1, (COLS - 42) / 2, "[A] Add note [D] Delete note [ENTER] Toggle [F1] Quit");
+        mvprintw(LINES - 1, (COLS - 42) / 2, "[A] Add note [D] Delete note [ENTER] Toggle [Q] Quit");
         refresh();
         handle_input(notes, &qnotes, &selected);
     }
@@ -130,7 +130,8 @@ void handle_input(Note notes[], int *qnotes, int *selected) {
                 (*selected)++;
             }
             break;
-        case KEY_F(1):
+        case 'Q':
+        case 'q':
             endwin();
             exit(0);
         default:
